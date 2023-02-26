@@ -72,3 +72,8 @@ iframe {
 .active-tab {
   display: block;
 }
+
+.icon {
+  height: 100%;
+  width: 100%;
+}

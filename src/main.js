@@ -29,7 +29,8 @@ const createWindow = () => {
             "id": "gchat",
             "name":"Google Chat",
             "url":"https://mail.google.com/chat/u/0/",
-            "useragent":""
+            "useragent":"",
+            "icon":""
           }
         ]
       }
