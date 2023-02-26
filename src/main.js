@@ -19,8 +19,21 @@ const createWindow = () => {
 
     win.webContents.openDevTools()
 
-    const configRootPath = path.join(__dirname, 'conf/one-chat.json');
-    appConfig = JSON.parse(nodeFs.readFileSync(configRootPath, 'utf-8'));
+    const configRootPath = process.env.CONF_LOCATION;
+    if (configRootPath.trim().length > 0) {
+      appConfig = JSON.parse(nodeFs.readFileSync(configRootPath, 'utf-8'));
+    } else {
+      appConfig = {
+        "platforms": [
+          {
+            "id": "gchat",
+            "name":"Google Chat",
+            "url":"https://mail.google.com/chat/u/0/",
+            "useragent":""
+          }
+        ]
+      }
+    }
     win.webContents.send('appconfig', appConfig)
 }
 
