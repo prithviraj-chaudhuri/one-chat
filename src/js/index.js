@@ -3,14 +3,21 @@ $(function() {
   var tablinks = "";
   var tabcontent = "";
   $.each(appconfig.platforms, function(key, value) {
+    var image = "";
+    if (value.icon.trim().length == 0) {
+      image = value.name;
+    } else {
+      image = '<img class="icon" src="'+value.icon+'"/>';
+    }
+
     if (key == 0){
-      tablinks += '<button class="tablinks active" data-target="'+value.id+'">'+value.name+'</button>';
-      tabcontent += '<div id="'+value.id+'" class="tabcontent col-sm-10 active-tab">' +
+      tablinks += '<button class="tablinks active" data-target="'+value.id+'">'+image+'</button>';
+      tabcontent += '<div id="'+value.id+'" class="tabcontent col-sm-11 active-tab">' +
                       '<webview src="'+value.url+'" useragent="'+value.useragent+'"></webview>' +
                     '</div>';
     } else {
-      tablinks += '<button class="tablinks" data-target="'+value.id+'">'+value.name+'</button>';
-      tabcontent += '<div id="'+value.id+'" class="tabcontent col-sm-10">' +
+      tablinks += '<button class="tablinks" data-target="'+value.id+'">'+image+'</button>';
+      tabcontent += '<div id="'+value.id+'" class="tabcontent col-sm-11">' +
                       '<webview src="'+value.url+'" useragent="'+value.useragent+'"></webview>' +
                     '</div>';
     }
