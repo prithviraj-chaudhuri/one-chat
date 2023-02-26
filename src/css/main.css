@@ -65,8 +65,9 @@ iframe {
   border: 1px solid #ccc;
   border-left: none;
   height: 300px;
+  display: none;
 }
 
-#slack {
-    display: none;
+.active-tab {
+  display: block;
 }
