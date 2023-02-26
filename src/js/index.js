@@ -1,5 +1,5 @@
 $(function() {
-  appconfig = JSON.parse($("#init-data").val());
+  appconfig = JSON.parse(localStorage.getItem("appconfig"));
   var tablinks = "";
   var tabcontent = "";
   $.each(appconfig.platforms, function(key, value) {
