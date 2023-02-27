@@ -22,6 +22,7 @@ $(function() {
                     '</div>';
     }
   });
+  tablinks += '<button class="tablinks" data-targe="add-new">Add New</button>';
   $(".tab").html(tablinks);
   $(".parent-tab").html($(".parent-tab").html() + tabcontent);
 
