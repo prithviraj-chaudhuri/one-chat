@@ -22,18 +22,6 @@ const createWindow = () => {
     const configRootPath = process.env.CONF_LOCATION;
     if (configRootPath.trim().length > 0) {
       appConfig = JSON.parse(nodeFs.readFileSync(configRootPath, 'utf-8'));
-    } else {
-      appConfig = {
-        "platforms": [
-          {
-            "id": "gchat",
-            "name":"Google Chat",
-            "url":"https://mail.google.com/chat/u/0/",
-            "useragent":"",
-            "icon":""
-          }
-        ]
-      }
     }
     win.webContents.send('appconfig', appConfig)
 }
