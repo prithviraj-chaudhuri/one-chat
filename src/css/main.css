@@ -77,3 +77,7 @@ iframe {
   height: 100%;
   width: 100%;
 }
+
+.add-new-section {
+  padding : 20px;
+}

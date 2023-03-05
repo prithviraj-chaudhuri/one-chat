@@ -22,7 +22,37 @@ $(function() {
                     '</div>';
     }
   });
-  tablinks += '<button class="tablinks" data-targe="add-new">Add New</button>';
+  tablinks += '<button class="tablinks" data-target="add-new">Add New</button>';
+  tabcontent += '<div id="add-new" class="tabcontent add-new-section col-sm-11">'+
+                  '<form id="add-new-form">' +
+                    '<div class="form-group">' +
+                      '<label for="url-input">ID</label>' +
+                      '<input type="text" class="form-control" id="id" placeholder="Enter Unique ID">' +
+                      '<br/>' +
+                    '</div>' +
+                    '<div class="form-group">' +
+                      '<label for="url-input">URL</label>' +
+                      '<input type="text" class="form-control" id="url" placeholder="Enter URL">' +
+                      '<br/>' +
+                    '</div>' +
+                    '<div class="form-group">' +
+                      '<label for="name-input">Name</label>' +
+                      '<input type="text" class="form-control" id="name" placeholder="Enter Name">' +
+                      '<br/>' +
+                    '</div>' +
+                    '<div class="form-group">' +
+                      '<label for="image-input">Image Path</label>' +
+                      '<input type="text" class="form-control" id="image" placeholder="Enter Icon Path">' +
+                      '<br/>' +
+                    '</div>' +
+                    '<div class="form-group">' +
+                      '<label for="user-agent-input">User Agent</label>' +
+                      '<input type="text" class="form-control" id="user-agent" placeholder="Enter User Agent">' +
+                      '<br/>' +
+                    '</div>' +
+                    '<button type="submit" class="btn btn-primary">Submit</button>' +
+                  '</form>' +
+                '</div>';
   $(".tab").html(tablinks);
   $(".parent-tab").html($(".parent-tab").html() + tabcontent);
 
@@ -37,6 +67,20 @@ $(function() {
       $(this).removeClass("active-tab")
     })
     $("#"+target).addClass("active-tab");
+  });
+
+  $("#add-new-form").on("submit", function( event ) {
+    event.preventDefault();
+    webapp = {
+      "id":         $("#id").val(),
+      "name":       $("#name").val(),
+      "url":        $("#url").val(),
+      "useragent":  $("#user-agent").val(),
+      "icon":       $("#image").val()
+    }
+    appconfig.platforms.push(webapp);
+    localStorage.clear();
+    localStorage.setItem("appconfig", JSON.stringify(appconfig));
   });
 });
 
